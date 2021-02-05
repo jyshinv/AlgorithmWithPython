@@ -1,3 +1,3 @@
-a,b = 3,5
-a,b = b,a
-print(a,b)
+
+for i in range(3,2) :
+   print(i)
