@@ -82,23 +82,23 @@ sortedarr = sorted(arr)
 stack=[]
 
 #+,-출력을 빈 리스트 생성
-check=[]
+result=[]
 
 #tc만큼 돈다.
 for i in range(tc):
     stack.append(sortedarr[i]) #sorted된 리스트 가장 작은 수 대입
-    check.append('+')
+    result.append('+')
     for _ in range(len(stack)) : #stack크기만큼 돈다.
         if arr[0] == stack[-1]:  # stack list 가장 끝 값과 비교했을 때 같으면
             stack.pop() #stack에서 pop한다.
             arr.pop(0) #0번째 index 삭제한다.
-            check.append('-')
+            result.append('-')
         else :
             break #안쪽 for문을 빠져나간다.
 
 #stack이 비어있으면 결과출력
 if not stack :
-    print(*check, sep="\n") #리스트 안의 내용을 출력해줌 [와 '' 없이 출력해줌
+    print(*result, sep="\n") #리스트 안의 내용을 출력해줌 [와 '' 없이 출력해줌
 else : #비어있지 않으면
     print('NO')
 
