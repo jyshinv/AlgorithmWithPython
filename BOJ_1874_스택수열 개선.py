@@ -63,43 +63,24 @@ push연산은 +로, pop 연산은 -로 표현하도록 한다. 불가능한 경�
 NO
 '''
 import sys
-input = sys.stdin.readline
 
-#tc 입력받기
-tc = int(input())
+n = int(sys.stdin.readline())
+stack = []
+op = []
+count = 1
 
-#빈 리스트 생성
-arr=[]
+for _ in range(n):
+    num = int(sys.stdin.readline())
+    while count <= num: #count가 점점 커져서 num과 같아질 때까지 while문이 돌아감
+        stack.append(count)
+        op.append('+')
+        count = count + 1
+    if stack[-1] == num: #리스트의 맨 마지막 값(스택의 top)이 현재 입력받는 num과 같은 경우
+        stack.pop() #pop한다.
+        op.append('-')
 
-#tc만큼 for문 돌려 입력값 받기
-for _ in range(tc) :
-    arr.append(int(input()))
 
-#오른차순 시킨 sortedarr
-sortedarr = sorted(arr)
-
-#stack으로 사용할 리스트 생성하고, sorted된 리스트 가장 작은 수 삽입
-stack=[]
-
-#+,-출력을 빈 리스트 생성
-result=[]
-
-#tc만큼 돈다.
-for i in range(tc):
-    stack.append(sortedarr[i]) #sorted된 리스트 가장 작은 수 대입
-    result.append('+')
-    for _ in range(len(stack)) : #stack크기만큼 돈다.
-        if arr[0] == stack[-1]:  # stack list 가장 끝 값과 비교했을 때 같으면
-            stack.pop() #stack에서 pop한다.
-            arr.pop(0) #0번째 index 삭제한다.
-            result.append('-')
-        else :
-            break #안쪽 for문을 빠져나간다.
-
-#stack이 비어있으면 결과출력
-if not stack :
-    print(*result, sep="\n") #리스트 안의 내용을 출력해줌 [와 '' 없이 출력해줌
-else : #비어있지 않으면
+if stack : #stack이 비어있지 않으면
     print('NO')
-
-
+else: #비어있으면
+    print(*op, sep="\n")
