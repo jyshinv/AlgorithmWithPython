@@ -68,8 +68,6 @@ input = sys.stdin.readline
 #tc 입력받기
 tc = int(input())
 
-#스택으로 사용할 빈 list생성
-
 #빈 리스트 생성
 arr=[]
 
@@ -82,6 +80,8 @@ sortedarr = sorted(arr)
 
 #stack으로 사용할 리스트 생성하고, sorted된 리스트 가장 작은 수 삽입
 stack=[]
+
+#+,-출력을 빈 리스트 생성
 check=[]
 
 #tc만큼 돈다.
@@ -98,7 +98,7 @@ for i in range(tc):
 
 #stack이 비어있으면 결과출력
 if not stack :
-    print(*check, sep="\n")
+    print(*check, sep="\n") #리스트 안의 내용을 출력해줌 [와 '' 없이 출력해줌
 else : #비어있지 않으면
     print('NO')
 
