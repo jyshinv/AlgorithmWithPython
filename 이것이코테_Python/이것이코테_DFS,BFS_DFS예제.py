@@ -5,11 +5,14 @@ def dfs(graph, v, visited):
     visited[v] = True
     print(v, end=' ')
 
+
     #현재 노드와 연결된 다른 노드를 재귀적으로 방문한다.
     for i in graph[v]: #i는 1부터시작 graph의 요소가 i가 된다.
+
         if not visited[i]: #visited[i]가 true가 아니라면 즉,false라면,
             #방문하지 않았을 경우에만 dfs()를 호출, 방문했을 경우에는 노드가 연결된 정보 다음정보로
             dfs(graph, i, visited)
+
 
 #각 노드가 연결된 정보를 리스트 자료형으로 표현한다(2차원)
 graph=[

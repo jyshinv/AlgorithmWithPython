@@ -1,8 +1,10 @@
 '''
-신입 사원 
+https://www.acmicpc.net/problem/1946
+신입 사원
 
 시간 제한	메모리 제한	제출	정답	맞은 사람	정답 비율
 2 초	256 MB	24230	7665	5580	31.806%
+
 문제
 언제나 최고만을 지향하는 굴지의 대기업 진영 주식회사가 신규 사원 채용을 실시한다.
 인재 선발 시험은 1차 서류심사와 2차 면접시험으로 이루어진다.
@@ -46,3 +48,29 @@
 4
 3
 '''
+
+import sys
+input = sys.stdin.readline
+
+#테스트 케이스의 개수를 입력받는다.
+t = int(input())
+
+score=[]
+#테스트케이스 개수만큼
+for _ in range(t):
+    #지원자의 숫자를 입력받는다.
+    n=int(input())
+    #입력과 동시에 오름차순 정렬시킨다.
+    score=sorted([list(map(int, input().split())) for x in range(n)], key=lambda x:x[0])
+
+    tmp=score[0][1] #서류 심사 점수 1위 지원자의 면접점수 성적을 저장
+    cnt=1
+    #리스트 첫번째는 무조건 뽑히므로, 두번째부터 비교를 시작한다.
+    for i in range(1, len(score)) :
+        if tmp>score[i][1] :
+            cnt+=1
+            tmp=score[i][1]
+
+    print(cnt)
+
+
